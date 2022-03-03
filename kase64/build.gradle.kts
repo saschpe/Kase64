@@ -11,24 +11,32 @@ repositories {
 }
 
 kotlin {
-    android()
+    android {
+        compilations.all {
+            java.sourceCompatibility = JavaVersion.VERSION_1_8
+            java.targetCompatibility = JavaVersion.VERSION_1_8
+            kotlinOptions.jvmTarget = "1.8"
+        }
+//        publishAllLibraryVariants()
+    }
     ios()
     iosSimulatorArm64()
 //    iosArm64 { binaries.framework("Kase64") }
 //    iosX64 { binaries.framework("Kase64") }
     js {
-        browser {
-            testTask {
-                useKarma {
-                    useSafari()
-                    useChrome()
-                }
-            }
-        }
-        compilations.all {
-            kotlinOptions.sourceMap = true
-            kotlinOptions.moduleKind = "umd"
-        }
+//        browser {
+//            testTask {
+//                useKarma {
+//                    useSafari()
+//                    useChrome()
+//                }
+//            }
+//        }
+        nodejs()
+//        compilations.all {
+//            kotlinOptions.sourceMap = true
+//            kotlinOptions.moduleKind = "umd"
+//        }
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
