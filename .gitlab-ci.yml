@@ -1,0 +1,44 @@
+---
+image: saschpe/android-sdk:29_29.0.2
+
+assemble:
+  stage: build
+  script:
+    - ./gradlew assemble
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - "*/build/**"
+
+lintDebug:
+  stage: build
+  script:
+    - ./gradlew lintDebug
+  artifacts:
+    paths:
+      - "*/build/reports/lint-results.*"
+
+spotless:
+  stage: build
+  script:
+    - ./gradlew spotlessCheck
+
+test:
+  stage: test
+  script:
+    - ./gradlew test
+  dependencies:
+    - assemble
+  artifacts:
+    reports:
+      junit: "*/build/test-results/**/TEST-*.xml"
+
+publish:
+  stage: deploy
+  only:
+    - master
+  script:
+    - ./scripts/secret decrypt --password ${SECRETS_KEY}
+    - ./scripts/publish
+  dependencies:
+    - assemble

@@ -1,0 +1,75 @@
+name: Main CI
+
+on: [push]
+
+jobs:
+  spotless:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Run Spotless
+        run: ./gradlew spotlessCheck
+
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build with Gradle
+        run: ./gradlew build
+      - name: Archive .gradle folder
+        uses: actions/upload-artifact@v1
+        with:
+          name: .gradle
+          path: .gradle
+      - name: Archive build folder
+        uses: actions/upload-artifact@v1
+        with:
+          name: build
+          path: build
+      - name: Archive kase64/build folder
+        uses: actions/upload-artifact@v1
+        with:
+          name: kase64_build
+          path: kase64/build
+
+  publish:
+    needs: build
+    runs-on: macos-latest
+    if: github.ref == 'refs/heads/master'
+    environment: Sonatype
+    env:
+      SONATYPE_GPG_KEY: ${{ secrets.SONATYPE_GPG_KEY }}
+      SONATYPE_GPG_KEY_PASSWORD: ${{ secrets.SONATYPE_GPG_KEY_PASSWORD }}
+      SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Download .gradle folder
+        uses: actions/download-artifact@v1
+        with:
+          name: .gradle
+      - name: Download build folder
+        uses: actions/download-artifact@v1
+        with:
+          name: build
+      - name: Download kase64/build folder
+        uses: actions/download-artifact@v1
+        with:
+          name: kase64_build
+      - name: Publish to Sonatype (Maven Central)
+        shell: bash
+        run: |
+          brew install gnupg
+          ./scripts/secret decrypt --password ${SECRETS_KEY}
+          ./scripts/publish

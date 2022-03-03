@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# Script to publish libary in case a release commit is discovered
+#
+
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+. "${SCRIPT_DIR}/inc.functions.sh"
+
+# Constants
+SECRET_FILE=buildSrc/src/main/kotlin/Secrets.kt
+
+# Checks
+[[ -f ${SECRET_FILE} ]] || die "Publish requires credentials at '${SECRET_FILE}'"
+
+# Functions
+function is_release_commit() {
+  commit_message=$(git log --oneline --format=%B -n 1 ${1} | head -n 1)
+  if [[ "${commit_message}" == "Release version "* ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# Let's roll
+git_head_commit=$(git rev-parse HEAD)
+git_last_merge_commit=$(git log -1 --format=%H --merges)
+
+if [[ ${git_head_commit} == "${git_last_merge_commit}" ]]; then
+  # HEAD is a merge commit, check commits on merged branch for a release commit by
+  # finding common ancestor and by iterating all commits from that branch
+  git_branch_parent_commits=($(git log -1 --merges --pretty=format:%P))
+  git_branch_merge_base_commit=$(git merge-base --all ${git_branch_parent_commits[0]} ${git_branch_parent_commits[1]})
+
+  for commit in $(git log --pretty=%H ${git_branch_merge_base_commit}..${git_branch_parent_commits[1]}); do
+    if is_release_commit "${commit}"; then
+      approve "Release commit found in branch at ${commit}, publishing..."
+      # Checkout release commit and build exactly that...
+      safe git checkout "${commit}"
+      safe ./gradlew publish
+      safe git checkout "${git_head_commit}"
+      exit 0
+    fi
+  done
+elif is_release_commit "${git_head_commit}"; then
+  approve "Release commit found at HEAD (${git_head_commit}), publishing..."
+  safe ./gradlew publish
+  exit 0
+fi
+
+warn "No release commit, skipping..."
