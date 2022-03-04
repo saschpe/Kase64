@@ -17,13 +17,13 @@ kotlin {
     targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
         testRuns["test"].deviceId = "iPhone 13"
     }
-//    js {
-//        nodejs()
-//        compilations.all {
-//            kotlinOptions.sourceMap = true
-//            kotlinOptions.moduleKind = "umd"
-//        }
-//    }
+    js {
+        nodejs()
+        compilations.all {
+            kotlinOptions.sourceMap = true
+            kotlinOptions.moduleKind = "umd"
+        }
+    }
     jvm {
         testRuns["test"].executionTask.configure { useJUnitPlatform() }
     }
