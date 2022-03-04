@@ -50,7 +50,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.0.0"
+version = "1.0.1"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
