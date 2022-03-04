@@ -25,12 +25,6 @@ dependencies {
 }
 ```
 
-## Usage
-
-
-
-## Users
-
 ## License
 
     Copyright 2022 Sascha Peilicke
@@ -47,4 +41,4 @@ dependencies {
     See the License for the specific language governing permissions and
     limitations under the License.
 
-[maven-central]: https://search.maven.org/artifact/de.peilicke.sascha/android-customtabs
+[maven-central]: https://search.maven.org/artifact/de.peilicke.sascha/kase64

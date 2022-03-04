@@ -11,34 +11,22 @@ repositories {
 }
 
 kotlin {
-    android {
-        compilations.all {
-            java.sourceCompatibility = JavaVersion.VERSION_1_8
-            java.targetCompatibility = JavaVersion.VERSION_1_8
-            kotlinOptions.jvmTarget = "1.8"
-        }
-//        publishAllLibraryVariants()
+    android()
+    ios { binaries.framework("Kase64") }
+    iosSimulatorArm64 { binaries.framework("Kase64") }
+    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
+        testRuns["test"].deviceId = "iPhone 13"
     }
-    ios()
-    iosSimulatorArm64()
-//    iosArm64 { binaries.framework("Kase64") }
-//    iosX64 { binaries.framework("Kase64") }
-    js {
-//        browser {
-//            testTask {
-//                useKarma {
-//                    useSafari()
-//                    useChrome()
-//                }
-//            }
-//        }
-        nodejs()
+//    js {
+//        nodejs()
 //        compilations.all {
 //            kotlinOptions.sourceMap = true
 //            kotlinOptions.moduleKind = "umd"
 //        }
+//    }
+    jvm {
+        testRuns["test"].executionTask.configure { useJUnitPlatform() }
     }
-    jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
@@ -47,39 +35,6 @@ kotlin {
     sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
 
     sourceSets.remove(sourceSets["androidAndroidTestRelease"]) // https://issuetracker.google.com/issues/152187160
-
-//    tasks {
-//        register("universalFrameworkDebug", org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask::class) {
-//            baseName = "Kase64"
-//            from(
-//                iosArm64().binaries.getFramework("Kase64", "Debug"),
-//                iosX64().binaries.getFramework("Kase64", "Debug")
-//            )
-//            destinationDir = buildDir.resolve("bin/universal/debug")
-//            group = "Universal framework"
-//            description = "Builds a universal (fat) debug framework"
-//            dependsOn("linkKase64DebugFrameworkIosArm64")
-//            dependsOn("linkKase64DebugFrameworkIosX64")
-//        }
-//
-//        register("universalFrameworkRelease", org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask::class) {
-//            baseName = "Kase64"
-//            from(
-//                iosArm64().binaries.getFramework("Kase64", "Release"),
-//                iosX64().binaries.getFramework("Kase64", "Release")
-//            )
-//            destinationDir = buildDir.resolve("bin/universal/release")
-//            group = "Universal framework"
-//            description = "Builds a universal (fat) release framework"
-//            dependsOn("linkKase64ReleaseFrameworkIosArm64")
-//            dependsOn("linkKase64ReleaseFrameworkIosX64")
-//        }
-//
-//        register("universalFramework") {
-//            dependsOn("universalFrameworkDebug")
-//            dependsOn("universalFrameworkRelease")
-//        }
-//    }
 }
 
 android {
@@ -95,7 +50,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.0.0"
+version = "0.0.1"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
@@ -143,12 +98,12 @@ publishing {
     }
 }
 
-signing {
-    val sonatypeGpgKey = System.getenv("SONATYPE_GPG_KEY")
-    val sonatypeGpgKeyPassword = System.getenv("SONATYPE_GPG_KEY_PASSWORD")
-    when {
-        sonatypeGpgKey == null || sonatypeGpgKeyPassword == null -> useGpgCmd()
-        else -> useInMemoryPgpKeys(sonatypeGpgKey, sonatypeGpgKeyPassword)
-    }
-    sign(publishing.publications)
-}
+// signing {
+//    val sonatypeGpgKey = System.getenv("SONATYPE_GPG_KEY")
+//    val sonatypeGpgKeyPassword = System.getenv("SONATYPE_GPG_KEY_PASSWORD")
+//    when {
+//        sonatypeGpgKey == null || sonatypeGpgKeyPassword == null -> useGpgCmd()
+//        else -> useInMemoryPgpKeys(sonatypeGpgKey, sonatypeGpgKeyPassword)
+//    }
+//    sign(publishing.publications)
+// }
