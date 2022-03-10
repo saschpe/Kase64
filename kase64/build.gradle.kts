@@ -11,12 +11,9 @@ repositories {
 }
 
 kotlin {
-    android()
+    android { publishAllLibraryVariants() }
     ios { binaries.framework("Kase64") }
     iosSimulatorArm64 { binaries.framework("Kase64") }
-    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
-        testRuns["test"].deviceId = "iPhone 13"
-    }
     js {
         nodejs()
         compilations.all {
@@ -24,9 +21,7 @@ kotlin {
             kotlinOptions.moduleKind = "umd"
         }
     }
-    jvm {
-        testRuns["test"].executionTask.configure { useJUnitPlatform() }
-    }
+    jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
 
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
@@ -35,6 +30,10 @@ kotlin {
     sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
 
     sourceSets.remove(sourceSets["androidAndroidTestRelease"]) // https://issuetracker.google.com/issues/152187160
+
+    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
+        testRuns["test"].deviceId = "iPhone 13"
+    }
 }
 
 android {
@@ -50,7 +49,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.0.2"
+version = "1.0.3"
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
