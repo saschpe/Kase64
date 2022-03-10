@@ -43,7 +43,7 @@ jobs:
   publish:
     needs: build
     runs-on: macos-latest
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     environment: Sonatype
     env:
       SONATYPE_GPG_KEY: ${{ secrets.SONATYPE_GPG_KEY }}
