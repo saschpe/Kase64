@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenCentral()
         google()
     }
     dependencies {
@@ -8,7 +9,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.6.20-RC"
+    kotlin("jvm") version "1.6.20"
     id("com.diffplug.spotless") version "6.3.0"
     id("com.github.ben-manes.versions") version "0.42.0"
 }
