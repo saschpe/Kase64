@@ -5,11 +5,6 @@ plugins {
     signing
 }
 
-repositories {
-    mavenCentral()
-    google()
-}
-
 kotlin {
     android { publishAllLibraryVariants() }
     ios { binaries.framework("Kase64") }
@@ -46,6 +41,8 @@ android {
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
+    testCoverage.jacocoVersion = "0.8.8"
 }
 
 group = "de.peilicke.sascha"

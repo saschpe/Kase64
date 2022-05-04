@@ -1,21 +1,8 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:7.0.4")
-    }
-}
-
 plugins {
     kotlin("jvm") version "1.6.21"
-    id("com.diffplug.spotless") version "6.5.0"
+    id("com.android.library") version "7.0.4" apply false
+    id("com.diffplug.spotless") version "6.5.1"
     id("com.github.ben-manes.versions") version "0.42.0"
-}
-
-repositories {
-    mavenCentral()
 }
 
 spotless {
