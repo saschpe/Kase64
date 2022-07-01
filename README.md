@@ -4,12 +4,18 @@
 ![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/kase64)
 [![Build Status](https://github.com/saschpe/kase64/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/kase64/actions)
 ![badge-android](http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/platform-ios-brightgreen.svg?style=flat)
 ![badge-native](http://img.shields.io/badge/platform-native-lightgrey.svg?style=flat)
 ![badge-js](http://img.shields.io/badge/platform-js-yellow.svg?style=flat)
 ![badge-jvm](http://img.shields.io/badge/platform-jvm-orange.svg?style=flat)
 ![Kotlin Version](https://img.shields.io/badge/kotlin-v1.3.60-F88909?style=flat&logo=kotlin)
 
 Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.
+
+**Supported encodings**
+
+- [Standard (Rfc 4648 section 4)](https://www.ietf.org/rfc/rfc4648.html#section-4)
+- [URL-safe (Rfc 4648 section 5)](https://www.ietf.org/rfc/rfc4648.html#section-5)
 
 ## Download
 
@@ -23,6 +29,26 @@ repositories {
 dependencies {
     implementation("de.peilicke.sascha:kase64:1.0.5")
 }
+```
+
+## Usage
+
+Standard Base64 decoding and encoding:
+
+```kotlin
+import saschpe.kase64.*
+
+val helloWorld = "SGVsbG8sIHdvcmxkIQ==".base64Decoded // "Hello, world!"
+println("Hello, world!".base64Encoded) // Prints "SGVsbG8sIHdvcmxkIQ=="
+```
+
+URL-safe Base64 decoding and encoding:
+
+```kotlin
+import saschpe.kase64.*
+
+val helloWorld = "SGVsbG8sIHdvcmxkIQ".base64UrlDecoded // "Hello, world!"
+println("Hello, world!".base64UrlEncoded) // Prints "SGVsbG8sIHdvcmxkIQ"
 ```
 
 ## License

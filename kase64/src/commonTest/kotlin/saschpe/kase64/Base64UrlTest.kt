@@ -55,6 +55,7 @@ class Base64UrlTest {
         assertEquals("Word", "V29yZA==".base64UrlDecoded)
         assertEquals("Hello", "SGVsbG8=".base64UrlDecoded)
         assertEquals("World!", "V29ybGQh".base64UrlDecoded)
+        assertEquals("Hello, world!", "SGVsbG8sIHdvcmxkIQ".base64UrlDecoded)
         assertEquals("Hello, world!", "SGVsbG8sIHdvcmxkIQ==".base64UrlDecoded)
         assertEquals(
             Encoding.Standard.alphabet,
