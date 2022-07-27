@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - [Kotlin 1.7.10](https://github.com/JetBrains/kotlin/releases/tag/v1.7.10)
   - [Gradle-7.5](https://docs.gradle.org/7.5/release-notes.html)
   - [Spotless-6.9.0](https://github.com/diffplug/spotless/blob/main/plugin-gradle/CHANGES.md#690---2022-07-28)
+- Add targets: linuxX64, macosArm64, mingwX64
+  - Stop building frameworks, they aren't published by default
 
 ## [1.0.5] - 2022-05-19
 ### Added

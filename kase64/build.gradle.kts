@@ -7,8 +7,8 @@ plugins {
 
 kotlin {
     android { publishAllLibraryVariants() }
-    ios { binaries.framework("Kase64") }
-    iosSimulatorArm64 { binaries.framework("Kase64") }
+    ios()
+    iosSimulatorArm64()
     js {
         nodejs()
         compilations.all {
@@ -17,6 +17,11 @@ kotlin {
         }
     }
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
+    linuxX64()
+    macosArm64()
+    mingwX64() // Winwhat?!?
+    // tvos()
+    // watchos()
 
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
