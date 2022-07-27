@@ -1,16 +1,24 @@
 # Kase64
 
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/kase64)
+![Kotlin Version](https://img.shields.io/badge/Kotlin-1.7.10-B125EA?logo=kotlin)
+[![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/kase64.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22de.peilicke.sascha%22%20AND%20a:%22kase64%22)
 [![Build Status](https://github.com/saschpe/kase64/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/kase64/actions)
-![badge-android](http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/platform-ios-brightgreen.svg?style=flat)
-![badge-native](http://img.shields.io/badge/platform-native-lightgrey.svg?style=flat)
-![badge-js](http://img.shields.io/badge/platform-js-yellow.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/platform-jvm-orange.svg?style=flat)
-![Kotlin Version](https://img.shields.io/badge/kotlin-v1.3.60-F88909?style=flat&logo=kotlin)
+[![License](http://img.shields.io/:License-Apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.
+![badge-android](http://img.shields.io/badge/Platform-Android-brightgreen.svg?logo=android)
+![badge-ios](http://img.shields.io/badge/Platform-iOS-orange.svg?logo=apple)
+![badge-js](http://img.shields.io/badge/Platform-NodeJS-yellow.svg?logo=javascript)
+![badge-jvm](http://img.shields.io/badge/Platform-JVM-red.svg?logo=openjdk)
+![badge-linux](http://img.shields.io/badge/Platform-Linux-lightgrey.svg?logo=linux)
+![badge-macos](http://img.shields.io/badge/Platform-macOS-orange.svg?logo=apple)
+![badge-windows](http://img.shields.io/badge/Platform-Windows-blue.svg?logo=windows)
+
+[//]: # (![badge-tvos]&#40;http://img.shields.io/badge/Platform-tvOS-orange.svg?logo=apple&#41;)
+
+[//]: # (![badge-watchos]&#40;http://img.shields.io/badge/Platform-watchOS-orange.svg?logo=apple&#41;)
+
+Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, Linux, JavaScript, Windows, watchOS, tvOS
+and plain JVM environments.
 
 **Supported encodings**
 

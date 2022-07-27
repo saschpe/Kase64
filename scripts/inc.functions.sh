@@ -31,12 +31,12 @@ function safe() {
 }
 
 function sed2() {
-  sed -i'.bak' "$1" ${@:2}
+  sed -i'.bak' "$1" "${@:2}"
   for file in "${@:2}"; do
     rm "${file}.bak"
   done
 }
 
 function get_version_name() {
-  echo $(grep "version = " $1 | xargs | cut -d"=" -f2)
+  grep "version = " "${1}" | xargs | cut -d"=" -f2
 }
