@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependency update:
   - [Android Gradle Plugin 7.2.1](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
   - [Kotlin 1.7.10](https://github.com/JetBrains/kotlin/releases/tag/v1.7.10)
+  - [Gradle-7.5](https://docs.gradle.org/7.5/release-notes.html)
+  - [Spotless-6.9.0](https://github.com/diffplug/spotless/blob/main/plugin-gradle/CHANGES.md#690---2022-07-28)
 
 ## [1.0.5] - 2022-05-19
 ### Added
