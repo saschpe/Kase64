@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Dependency update:
+  - [Android Gradle Plugin 7.2.2](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
+  - [Gradle-7.5.1](https://docs.gradle.org/7.5.1/release-notes.html)
 
 ## [1.0.6] - 2022-07-31
 - Dependency update:
