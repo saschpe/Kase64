@@ -41,7 +41,7 @@ java {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = 33
     namespace = "saschpe.kase64"
 
     defaultConfig {

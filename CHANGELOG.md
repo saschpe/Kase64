@@ -6,8 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
+- Android: Compile with API level 33 / Android 13
 - Dependency update:
-  - [Android Gradle Plugin 7.2.2](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
+  - [Android Gradle Plugin 8.1.0-rc01](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
   - [Gradle-7.5.1](https://docs.gradle.org/7.5.1/release-notes.html)
   - [Kotlin 1.9.10](https://github.com/JetBrains/kotlin/releases/tag/v1.9.10)
 
