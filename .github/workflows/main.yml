@@ -1,15 +1,15 @@
 name: Main CI
-
 on: [push]
 
 jobs:
   spotless:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3
         with:
+          distribution: temurin
           java-version: 17
       - name: Run Spotless
         run: ./gradlew spotlessCheck
@@ -17,28 +17,22 @@ jobs:
   build:
     runs-on: macos-12
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3
         with:
+          distribution: temurin
           java-version: 17
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Archive .gradle folder
-        uses: actions/upload-artifact@v1
-        with:
-          name: .gradle
-          path: .gradle
-      - name: Archive build folder
-        uses: actions/upload-artifact@v1
-        with:
-          name: build
-          path: build
-      - name: Archive kase64/build folder
-        uses: actions/upload-artifact@v1
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: kase64_build
-          path: kase64/build
+          path: |
+            .gradle
+            build
+            kase64/build
 
   publish:
     needs: build
@@ -50,21 +44,14 @@ jobs:
       SONATYPE_GPG_KEY_PASSWORD: ${{ secrets.SONATYPE_GPG_KEY_PASSWORD }}
       SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3
         with:
+          distribution: temurin
           java-version: 17
-      - name: Download .gradle folder
-        uses: actions/download-artifact@v1
-        with:
-          name: .gradle
-      - name: Download build folder
-        uses: actions/download-artifact@v1
-        with:
-          name: build
-      - name: Download kase64/build folder
-        uses: actions/download-artifact@v1
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
         with:
           name: kase64_build
       - name: Publish to Sonatype (Maven Central)
