@@ -6,5 +6,4 @@
 .idea/misc.xml
 **/pom.xml
 *.jks
-buildSrc/src/main/kotlin/Secrets.kt
 kotlin-js-store
