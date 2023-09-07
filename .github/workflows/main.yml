@@ -1,6 +1,10 @@
 name: Main
 on: [push]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   spotless:
     runs-on: ubuntu-latest
