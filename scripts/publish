@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script to publish libary in case a release commit is discovered
+# Script to publish a library in case a release commit is discovered
 #
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
