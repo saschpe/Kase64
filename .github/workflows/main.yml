@@ -1,5 +1,9 @@
-name: Main CI
+name: Main
 on: [push]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   spotless:
@@ -40,9 +44,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment: Sonatype
     env:
+      ORG_GRADLE_PROJECT_sonatypePass: ${{ secrets.SONATYPE_API_KEY }}
+      ORG_GRADLE_PROJECT_sonatypeUser: ${{ secrets.SONATYPE_USER }}
       SONATYPE_GPG_KEY: ${{ secrets.SONATYPE_GPG_KEY }}
       SONATYPE_GPG_KEY_PASSWORD: ${{ secrets.SONATYPE_GPG_KEY_PASSWORD }}
-      SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -56,7 +61,4 @@ jobs:
           name: kase64_build
       - name: Publish to Sonatype (Maven Central)
         shell: bash
-        run: |
-          brew install gnupg
-          ./scripts/secret decrypt --password ${SECRETS_KEY}
-          ./scripts/publish
+        run: ./scripts/publish

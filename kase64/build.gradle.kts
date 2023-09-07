@@ -19,7 +19,7 @@ kotlin {
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
     linuxX64()
     macosArm64()
-    mingwX64() // Winwhat?!?
+    mingwX64() // Win-what ?!?
     // tvos()
     // watchos()
 
@@ -34,18 +34,21 @@ kotlin {
     }
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
 android {
-    buildToolsVersion = "32.0.0"
-    compileSdk = 31
+    compileSdk = 33
+    namespace = "saschpe.kase64"
 
     defaultConfig {
         minSdk = 17
-        targetSdk = 31
     }
 
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-
-    testCoverage.jacocoVersion = "0.8.8"
+    testCoverage.jacocoVersion = "0.8.10"
 }
 
 group = "de.peilicke.sascha"
@@ -85,14 +88,16 @@ publishing {
         }
     }
 
-    repositories {
-        maven {
-            name = "sonatype"
-            credentials {
-                username = Secrets.Sonatype.user
-                password = Secrets.Sonatype.apiKey
+    if (hasProperty("sonatypeUser") && hasProperty("sonatypePass")) {
+        repositories {
+            maven {
+                name = "sonatype"
+                credentials {
+                    username = property("sonatypeUser") as String
+                    password = property("sonatypePass") as String
+                }
+                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
             }
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
         }
     }
 }
