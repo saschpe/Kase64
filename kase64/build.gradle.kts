@@ -21,8 +21,8 @@ kotlin {
     macosArm64()
     macosX64()
     mingwX64() // Win-what ?!?
-    tvos()
-    watchos()
+    tvosArm64()
+    watchosArm64()
 
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
