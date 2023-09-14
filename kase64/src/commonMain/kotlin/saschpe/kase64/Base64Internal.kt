@@ -22,12 +22,12 @@ internal sealed interface Encoding {
     val alphabet: String
     val requiresPadding: Boolean
 
-    object Standard : Encoding {
+    data object Standard : Encoding {
         override val alphabet: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
         override val requiresPadding: Boolean = true
     }
 
-    object UrlSafe : Encoding {
+    data object UrlSafe : Encoding {
         override val alphabet: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
         override val requiresPadding: Boolean = false // Padding is optional
     }
