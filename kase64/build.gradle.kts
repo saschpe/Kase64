@@ -1,6 +1,6 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
+    kotlin("multiplatform") version "1.9.10"
+    id("com.android.library") version "8.1.0-rc01"
     `maven-publish`
     signing
 }
