@@ -34,17 +34,13 @@ kotlin {
     }
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
-}
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 android {
-    compileSdk = 33
     namespace = "saschpe.kase64"
 
     defaultConfig {
+        compileSdk = 33
         minSdk = 17
     }
 
@@ -54,14 +50,8 @@ android {
 group = "de.peilicke.sascha"
 version = "1.0.7"
 
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
 publishing {
     publications.withType<MavenPublication> {
-        artifact(javadocJar.get())
-
         pom {
             name.set("Kase64")
             description.set("Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")
