@@ -19,19 +19,16 @@ kotlin {
     jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
     linuxX64()
     macosArm64()
+    macosX64()
     mingwX64() // Win-what ?!?
-    // tvos()
-    // watchos()
+    tvos()
+    watchos()
 
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
     }
     sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
     sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
-
-    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithSimulatorTests::class.java) {
-        testRuns["test"].deviceId = "iPhone 14"
-    }
 }
 
 java {

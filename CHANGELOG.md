@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.7] - 2023-09-07
 ### Changed
 - Android: Compile with API level 33 / Android 13
+- Apple: Add targets for `tvOS` and `watchOS` and `macOS` x64 builds
 - Dependency update:
   - [Android Gradle Plugin 8.1.0-rc01](https://developer.android.com/studio/releases/gradle-plugin#7-2-0)
   - [Gradle-7.5.1](https://docs.gradle.org/7.5.1/release-notes.html)
