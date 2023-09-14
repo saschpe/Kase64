@@ -1,8 +1,8 @@
 # Kase64
 
-![Kotlin Version](https://img.shields.io/badge/Kotlin-1.7.10-B125EA?logo=kotlin)
-[![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/kase64.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22de.peilicke.sascha%22%20AND%20a:%22kase64%22)
-[![Build Status](https://github.com/saschpe/kase64/workflows/Main%20CI/badge.svg)](https://github.com/saschpe/kase64/actions)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.9.10-B125EA?logo=kotlin)](https://kotlinlang.org)
+[![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/kase64.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/de.peilicke.sascha/kase64)
+[![Build Status](https://github.com/saschpe/kase64/workflows/Main/badge.svg)](https://github.com/saschpe/kase64/actions)
 [![License](http://img.shields.io/:License-Apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 ![badge-android](http://img.shields.io/badge/Platform-Android-brightgreen.svg?logo=android)
