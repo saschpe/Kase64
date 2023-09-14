@@ -21,8 +21,8 @@ kotlin {
     macosArm64()
     macosX64()
     mingwX64() // Win-what ?!?
-    tvos()
-    watchos()
+    tvosArm64()
+    watchosArm64()
 
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
@@ -45,7 +45,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.0.7"
+version = "1.1.0"
 
 publishing {
     publications.withType<MavenPublication> {
