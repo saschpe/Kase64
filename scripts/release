@@ -25,6 +25,10 @@ function version_gt() {
   test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"
 }
 
+get_version_name() {
+  grep "version = " "$1" | cut -d"=" -f2 | xargs
+}
+
 # Checks
 if [[ $# -ne 1 ]]; then
   usage
