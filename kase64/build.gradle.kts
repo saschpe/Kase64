@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.9.10"
+    kotlin("multiplatform") version "1.9.23"
     id("com.android.library") version "8.1.0-rc01"
     `maven-publish`
     signing
@@ -7,16 +7,10 @@ plugins {
 
 kotlin {
     androidTarget { publishAllLibraryVariants() }
-    ios()
+    iosArm64()
     iosSimulatorArm64()
-    js {
-        nodejs()
-        compilations.all {
-            kotlinOptions.sourceMap = true
-            kotlinOptions.moduleKind = "umd"
-        }
-    }
-    jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
+    js { nodejs() }
+    jvm()
     linuxX64()
     macosArm64()
     macosX64()
@@ -24,11 +18,11 @@ kotlin {
     tvosArm64()
     watchosArm64()
 
+    applyDefaultHierarchyTemplate()
+
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
     }
-    sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
-    sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
 }
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
