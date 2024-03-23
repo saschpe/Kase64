@@ -1,22 +1,16 @@
 plugins {
-    kotlin("multiplatform") version "1.9.10"
-    id("com.android.library") version "8.1.0-rc01"
+    kotlin("multiplatform")
+    id("com.android.library")
     `maven-publish`
     signing
 }
 
 kotlin {
     androidTarget { publishAllLibraryVariants() }
-    ios()
+    iosArm64()
     iosSimulatorArm64()
-    js {
-        nodejs()
-        compilations.all {
-            kotlinOptions.sourceMap = true
-            kotlinOptions.moduleKind = "umd"
-        }
-    }
-    jvm { testRuns["test"].executionTask.configure { useJUnitPlatform() } }
+    js { nodejs() }
+    jvm()
     linuxX64()
     macosArm64()
     macosX64()
@@ -24,11 +18,11 @@ kotlin {
     tvosArm64()
     watchosArm64()
 
+    applyDefaultHierarchyTemplate()
+
     sourceSets["commonTest"].dependencies {
         implementation(kotlin("test"))
     }
-    sourceSets["iosSimulatorArm64Main"].dependsOn(sourceSets["iosMain"])
-    sourceSets["iosSimulatorArm64Test"].dependsOn(sourceSets["iosTest"])
 }
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
@@ -37,11 +31,11 @@ android {
     namespace = "saschpe.kase64"
 
     defaultConfig {
-        compileSdk = 33
+        compileSdk = 34
         minSdk = 17
     }
 
-    testCoverage.jacocoVersion = "0.8.10"
+    testCoverage.jacocoVersion = "0.8.11"
 }
 
 group = "de.peilicke.sascha"
