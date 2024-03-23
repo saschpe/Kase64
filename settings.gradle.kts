@@ -3,10 +3,17 @@ pluginManagement {
         gradlePluginPortal()
         google()
     }
+
+    plugins {
+        kotlin("multiplatform") version "1.9.23"
+        id("com.android.library") version "8.2.2"
+        `maven-publish`
+        signing
+    }
 }
 
-@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
+    @Suppress("UnstableApiUsage")
     repositories {
         mavenCentral()
         google()

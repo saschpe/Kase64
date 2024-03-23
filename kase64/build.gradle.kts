@@ -1,6 +1,6 @@
 plugins {
-    kotlin("multiplatform") version "1.9.23"
-    id("com.android.library") version "8.1.0-rc01"
+    kotlin("multiplatform")
+    id("com.android.library")
     `maven-publish`
     signing
 }
@@ -31,11 +31,11 @@ android {
     namespace = "saschpe.kase64"
 
     defaultConfig {
-        compileSdk = 33
+        compileSdk = 34
         minSdk = 17
     }
 
-    testCoverage.jacocoVersion = "0.8.10"
+    testCoverage.jacocoVersion = "0.8.11"
 }
 
 group = "de.peilicke.sascha"
