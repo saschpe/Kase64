@@ -1,5 +1,5 @@
 plugins {
-    id("com.diffplug.spotless") version "6.21.0"
+    id("com.diffplug.spotless") version "6.25.0"
     id("com.github.ben-manes.versions") version "0.51.0"
 }
 
@@ -10,10 +10,10 @@ spotless {
     }
     kotlin {
         target("**/*.kt")
-        ktlint()
+        ktlint("1.2.1").setEditorConfigPath(".editorconfig")
     }
     kotlinGradle {
-        ktlint()
+        ktlint("1.2.1").setEditorConfigPath(".editorconfig")
     }
 }
 
