@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.1] - 2024-03-23
 - Provide javadoc artifacts for Sonatype Maven Central
+- Dependency update:
+    - [Gradle 8.8](https://docs.gradle.org/8.8/release-notes.html)
 
 ## [1.1.0] - 2023-09-14
 ### Changed
