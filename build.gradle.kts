@@ -10,10 +10,10 @@ spotless {
     }
     kotlin {
         target("**/*.kt")
-        ktlint("1.2.1").setEditorConfigPath(".editorconfig")
+        ktlint("1.3.0").setEditorConfigPath(".editorconfig")
     }
     kotlinGradle {
-        ktlint("1.2.1").setEditorConfigPath(".editorconfig")
+        ktlint("1.3.0").setEditorConfigPath(".editorconfig")
     }
 }
 
