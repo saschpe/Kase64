@@ -9,6 +9,7 @@ plugins {
 kotlin {
     androidTarget { publishAllLibraryVariants() }
     iosArm64()
+    iosX64()
     iosSimulatorArm64()
     js { nodejs() }
     jvm()
@@ -17,7 +18,9 @@ kotlin {
     macosX64()
     mingwX64() // Win-what ?!?
     tvosArm64()
+    tvosX64()
     watchosArm64()
+    watchosX64()
 
     applyDefaultHierarchyTemplate()
 
