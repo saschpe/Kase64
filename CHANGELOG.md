@@ -5,13 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
-## [1.1.1] - 2024-03-23
-- Provide javadoc artifacts for Sonatype Maven Central
 - Add iosX64, tvosX64 and watchosX64 build target
 - Dependency update:
     - [Gradle 8.8](https://docs.gradle.org/8.8/release-notes.html)
     - [Kotlin 2.0.0](https://github.com/JetBrains/kotlin/releases/tag/v2.0.0)
+
+## [1.1.1] - 2024-03-23
+- Provide javadoc artifacts for Sonatype Maven Central
 
 ## [1.1.0] - 2023-09-14
 ### Changed
