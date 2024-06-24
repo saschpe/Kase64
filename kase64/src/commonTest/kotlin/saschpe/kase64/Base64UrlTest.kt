@@ -69,6 +69,10 @@ class Base64UrlTest {
             "MTIzNDU2Nzg5MC09IUAjJCVeJiooKV8rcXdlcnR5dWlvcFtdOydcLC4vPz48fCI6fXtQYH4".base64UrlDecoded,
         )
         assertEquals("saschpe", "c2FzY2hwZQ".base64UrlDecoded)
+        assertEquals(
+            """{"aud":"ae.rain.com","exp":1713261313,"iat":1713259513,"iss":"ae.rain.com","rain:jurisdiction":"uae","sub":"58490195-01b9-4dcf-ae28-ae0b20f8fbda"}""",
+            "eyJhdWQiOiJhZS5yYWluLmNvbSIsImV4cCI6MTcxMzI2MTMxMywiaWF0IjoxNzEzMjU5NTEzLCJpc3MiOiJhZS5yYWluLmNvbSIsInJhaW46anVyaXNkaWN0aW9uIjoidWFlIiwic3ViIjoiNTg0OTAxOTUtMDFiOS00ZGNmLWFlMjgtYWUwYjIwZjhmYmRhIn0".base64UrlDecoded,
+        )
     }
 
     @Test
