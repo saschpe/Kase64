@@ -18,6 +18,7 @@ kotlin {
     macosX64()
     mingwX64() // Win-what ?!?
     tvosArm64()
+    tvosSimulatorArm64()
     tvosX64()
     watchosArm64()
     watchosX64()
