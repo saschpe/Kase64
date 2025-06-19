@@ -38,7 +38,7 @@ android {
     namespace = "saschpe.kase64"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 36
         minSdk = 17
     }
 
