@@ -42,7 +42,7 @@ android {
         minSdk = 17
     }
 
-    testCoverage.jacocoVersion = "0.8.11"
+    testCoverage.jacocoVersion = "0.8.13"
 }
 
 group = "de.peilicke.sascha"
