@@ -46,7 +46,7 @@ android {
 }
 
 group = "de.peilicke.sascha"
-version = "1.3.0"
+version = "1.3.1"
 
 publishing {
     publications.withType<MavenPublication> {
@@ -54,7 +54,7 @@ publishing {
             group = JavaBasePlugin.DOCUMENTATION_GROUP
             description = "Assembles Kotlin docs with Dokka into a Javadoc jar"
             archiveClassifier.set("javadoc")
-            from(tasks.named("dokkaHtml"))
+            from(tasks.named("dokkaGeneratePublicationHtml"))
             archiveBaseName.set("${archiveBaseName.get()}-$name")
         })
         pom {
