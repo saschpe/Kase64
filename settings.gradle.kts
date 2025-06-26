@@ -14,8 +14,8 @@ pluginManagement {
     }
 
     plugins {
-        kotlin("multiplatform") version "2.1.21"
-        id("com.android.library") version "8.10.1"
+        kotlin("multiplatform") version "2.2.0"
+        id("com.android.library") version "8.11.0"
         id("org.jetbrains.dokka") version "2.0.0"
     }
 }
