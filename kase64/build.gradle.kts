@@ -7,10 +7,12 @@ plugins {
 }
 
 kotlin {
-    androidTarget { publishAllLibraryVariants() }
+    jvmToolchain(21)
+
+    androidTarget()
     iosArm64()
-    iosX64()
     iosSimulatorArm64()
+    iosX64()
     js { nodejs() }
     jvm()
     linuxX64()
@@ -23,16 +25,12 @@ kotlin {
     watchosArm64()
     watchosX64()
 
-    applyDefaultHierarchyTemplate()
-
     sourceSets {
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
     }
 }
-
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 
 android {
     namespace = "saschpe.kase64"
