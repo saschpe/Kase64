@@ -1,5 +1,5 @@
 plugins {
-    id("com.diffplug.spotless") version "8.3.0"
+    id("com.diffplug.spotless") version "8.4.0"
     id("com.github.ben-manes.versions") version "0.52.0"
 }
 
