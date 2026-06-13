@@ -89,6 +89,5 @@ class Base64Test {
     }
 
     @Test
-    fun string_roundTrip() =
-        assertEquals(Encoding.Standard.alphabet, Encoding.Standard.alphabet.base64Encoded.base64Decoded)
+    fun string_roundTrip() = assertEquals(Encoding.Standard.alphabet, Encoding.Standard.alphabet.base64Encoded.base64Decoded)
 }
