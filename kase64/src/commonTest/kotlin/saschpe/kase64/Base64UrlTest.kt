@@ -98,6 +98,5 @@ class Base64UrlTest {
     }
 
     @Test
-    fun string_roundTrip() =
-        assertEquals(Encoding.UrlSafe.alphabet, Encoding.UrlSafe.alphabet.base64UrlEncoded.base64UrlDecoded)
+    fun string_roundTrip() = assertEquals(Encoding.UrlSafe.alphabet, Encoding.UrlSafe.alphabet.base64UrlEncoded.base64UrlDecoded)
 }
