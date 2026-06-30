@@ -31,14 +31,14 @@ if [[ ${git_head_commit} == "${git_last_merge_commit}" ]]; then
       approve "Release commit found in branch at ${commit}, publishing..."
       # Checkout release commit and build exactly that...
       safe git checkout "${commit}"
-      safe ./gradlew publish
+      safe ./gradlew publishToMavenCentral
       safe git checkout "${git_head_commit}"
       exit 0
     fi
   done
 elif is_release_commit "${git_head_commit}"; then
   approve "Release commit found at HEAD (${git_head_commit}), publishing..."
-  safe ./gradlew publish
+  safe ./gradlew publishToMavenCentral
   exit 0
 fi
 

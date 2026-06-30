@@ -61,10 +61,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment: Sonatype
     env:
-      ORG_GRADLE_PROJECT_sonatypePass: ${{ secrets.SONATYPE_API_KEY }}
-      ORG_GRADLE_PROJECT_sonatypeUser: ${{ secrets.SONATYPE_USER }}
-      SONATYPE_GPG_KEY: ${{ secrets.SONATYPE_GPG_KEY }}
-      SONATYPE_GPG_KEY_PASSWORD: ${{ secrets.SONATYPE_GPG_KEY_PASSWORD }}
+      ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_API_KEY }}
+      ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USER }}
+      ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SONATYPE_GPG_KEY }}
+      ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SONATYPE_GPG_KEY_PASSWORD }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
         with:

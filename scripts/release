@@ -12,7 +12,7 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # Constants
 FILES=(
-  kase64/build.gradle.kts
+  gradle.properties
 )
 
 # Functions
@@ -26,7 +26,7 @@ function version_gt() {
 }
 
 get_version_name() {
-  grep "version = " "$1" | cut -d"=" -f2 | xargs
+  grep "version=" "$1" | cut -d"=" -f2 | xargs
 }
 
 # Checks
