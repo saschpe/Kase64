@@ -1,14 +1,20 @@
 plugins {
     kotlin("multiplatform")
-    id("com.android.library")
-    id("org.jetbrains.dokka")
+    id("com.android.kotlin.multiplatform.library")
     id("com.vanniktech.maven.publish") version "0.37.0"
+    id("org.jetbrains.dokka")
 }
 
 kotlin {
     jvmToolchain(21)
 
-    androidTarget()
+    android {
+        namespace = "saschpe.kase64"
+        compileSdk = 36
+        minSdk = 17
+        withHostTest { isIncludeAndroidResources = true }
+        testCoverage.jacocoVersion = "0.8.13"
+    }
     iosArm64()
     iosSimulatorArm64()
     iosX64()
@@ -26,17 +32,6 @@ kotlin {
             implementation(kotlin("test"))
         }
     }
-}
-
-android {
-    namespace = "saschpe.kase64"
-
-    defaultConfig {
-        compileSdk = 36
-        minSdk = 17
-    }
-
-    testCoverage.jacocoVersion = "0.8.13"
 }
 
 mavenPublishing {
