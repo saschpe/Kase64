@@ -2,8 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.dokka")
-    `maven-publish`
-    signing
+    id("com.vanniktech.maven.publish") version "0.36.0"
 }
 
 kotlin {
@@ -40,64 +39,34 @@ android {
     testCoverage.jacocoVersion = "0.8.13"
 }
 
-group = "de.peilicke.sascha"
-version = "1.3.2"
+mavenPublishing {
+    publishToMavenCentral(automaticRelease = true)
+    signAllPublications()
 
-publishing {
-    publications.withType<MavenPublication> {
-        artifact(project.tasks.register("${name}DokkaJar", Jar::class) {
-            group = JavaBasePlugin.DOCUMENTATION_GROUP
-            description = "Assembles Kotlin docs with Dokka into a Javadoc jar"
-            archiveClassifier.set("javadoc")
-            from(tasks.named("dokkaGeneratePublicationHtml"))
-            archiveBaseName.set("${archiveBaseName.get()}-$name")
-        })
-        pom {
-            name.set("Kase64")
-            description.set("Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")
+    coordinates("de.peilicke.sascha", name, version.toString())
+
+    pom {
+        name.set("Kase64")
+        description.set("Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, JavaScript and plain JVM environments.")
+        url.set("https://github.com/saschpe/kase64")
+
+        licenses {
+            license {
+                name.set("Apache-2.0")
+                url.set("https://opensource.org/licenses/Apache-2.0")
+            }
+        }
+        developers {
+            developer {
+                id.set("saschpe")
+                name.set("Sascha Peilicke")
+                email.set("sascha@peilicke.de")
+            }
+        }
+        scm {
+            connection.set("scm:git:git://github.com/saschpe/kase64.git")
+            developerConnection.set("scm:git:ssh://github.com/saschpe/kase64.git")
             url.set("https://github.com/saschpe/kase64")
-
-            licenses {
-                license {
-                    name.set("Apache-2.0")
-                    url.set("https://opensource.org/licenses/Apache-2.0")
-                }
-            }
-            developers {
-                developer {
-                    id.set("saschpe")
-                    name.set("Sascha Peilicke")
-                    email.set("sascha@peilicke.de")
-                }
-            }
-            scm {
-                connection.set("scm:git:git://github.com/saschpe/kase64.git")
-                developerConnection.set("scm:git:ssh://github.com/saschpe/kase64.git")
-                url.set("https://github.com/saschpe/kase64")
-            }
         }
     }
-
-    if (hasProperty("sonatypeUser") && hasProperty("sonatypePass")) {
-        repositories {
-            maven {
-                name = "sonatype"
-                credentials {
-                    username = property("sonatypeUser") as String
-                    password = property("sonatypePass") as String
-                }
-                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
-            }
-        }
-    }
-}
-
-signing {
-    val sonatypeGpgKey = System.getenv("SONATYPE_GPG_KEY")
-    val sonatypeGpgKeyPassword = System.getenv("SONATYPE_GPG_KEY_PASSWORD")
-    when {
-        sonatypeGpgKey == null || sonatypeGpgKeyPassword == null -> useGpgCmd()
-        else -> useInMemoryPgpKeys(sonatypeGpgKey, sonatypeGpgKeyPassword)
-    }
-    sign(publishing.publications)
 }
