@@ -52,7 +52,7 @@ jobs:
         if: always()
         with:
           name: build-reports
-          path: **/build/reports/
+          path: "**/build/reports/"
       - name: Archive build artifacts
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v4
