@@ -1,6 +1,6 @@
 plugins {
     id("com.diffplug.spotless") version "8.10.4"
-    id("io.github.ben-manes.versions") version "0.65.0"
+    id("io.github.ben-manes.versions") version "0.66.0"
 }
 
 spotless {
