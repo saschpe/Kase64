@@ -1,6 +1,6 @@
 # Kase64
 
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.9.10-B125EA?logo=kotlin)](https://kotlinlang.org)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-2.4.21-B125EA?logo=kotlin)](https://kotlinlang.org)
 [![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/kase64.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/de.peilicke.sascha/kase64)
 [![Build Status](https://github.com/saschpe/kase64/workflows/Main/badge.svg)](https://github.com/saschpe/kase64/actions)
 [![License](http://img.shields.io/:License-Apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
@@ -11,11 +11,9 @@
 ![badge-jvm](http://img.shields.io/badge/Platform-JVM-red.svg?logo=openjdk)
 ![badge-linux](http://img.shields.io/badge/Platform-Linux-lightgrey.svg?logo=linux)
 ![badge-macos](http://img.shields.io/badge/Platform-macOS-orange.svg?logo=apple)
+![badge-tvos](http://img.shields.io/badge/Platform-tvOS-orange.svg?logo=apple)
+![badge-watchos](http://img.shields.io/badge/Platform-watchOS-orange.svg?logo=apple)
 ![badge-windows](http://img.shields.io/badge/Platform-Windows-blue.svg?logo=windows)
-
-[//]: # (![badge-tvos]&#40;http://img.shields.io/badge/Platform-tvOS-orange.svg?logo=apple&#41;)
-
-[//]: # (![badge-watchos]&#40;http://img.shields.io/badge/Platform-watchOS-orange.svg?logo=apple&#41;)
 
 Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android, iOS, Linux, JavaScript, Windows, watchOS, tvOS
 and plain JVM environments.
