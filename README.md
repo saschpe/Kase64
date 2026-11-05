@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    implementation("de.peilicke.sascha:kase64:1.5.0")
+    implementation("de.peilicke.sascha:kase64:1.5.1")
 }
 ```
 
