@@ -10,7 +10,7 @@ kotlin {
 
     android {
         namespace = "saschpe.kase64"
-        compileSdk = 36
+        compileSdk = 37
         minSdk = 17
         withHostTest { isIncludeAndroidResources = true }
         testCoverage.jacocoVersion = "0.8.13"
